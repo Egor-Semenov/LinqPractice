@@ -29,7 +29,7 @@ namespace Task2
         //В каждой строке написаны две координаты точки (X, Y), разделенные пробелом.
         //Вернуть список точек
         //</summary>
-        public static List<Point> ParsePoints(IEnumerable<string> lines)
+        static List<Point> ParsePoints(IEnumerable<string> lines)
         {
             return lines
                 .Select(line => line.Split(" "))
