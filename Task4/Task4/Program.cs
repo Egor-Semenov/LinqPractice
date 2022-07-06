@@ -31,7 +31,7 @@ namespace Task4
         //Вам нужно составить лексикографически упорядоченный список всех встречающихся в этом тексте слов.
         //Слова нужно сравнивать регистронезависимо, а выводить в нижнем регистре.
         //</summary>
-        public static string[] GetSortedWords(params string[] textLines)
+        static string[] GetSortedWords(params string[] textLines)
         {
             return textLines
                 .SelectMany(line => Regex.Split(line, @"\W+"))
