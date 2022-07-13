@@ -15,7 +15,7 @@ namespace Task21
     {
         static void Main(string[] args)
         {
-            List<Client> _dataTask10 = new List<Client>
+            List<Client> clients = new List<Client>
             {
                 new Client {Id = 1, Year = 2019, Month = 10, OverallTrainingTime = 30 },
                 new Client {Id = 2, Year = 2017, Month = 11, OverallTrainingTime = 36 },
@@ -24,11 +24,11 @@ namespace Task21
                 new Client {Id = 5, Year = 2018, Month = 1, OverallTrainingTime = 40}
             };
 
-            var result = FindMaxTraineTimeYear(_dataTask10);
+            var yearTimes = FindTraineTimeInYear(clients);
 
-            foreach (var item in result)
+            foreach (var time in yearTimes)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(time);
             }
         }
 
@@ -39,14 +39,14 @@ namespace Task21
         //Вывести суммарную продожительность занятий за год, отсортированню по возрастанию.
         //При наличии одинаковых от меньшего к большему году
         //</summary>
-        static List<string> FindMaxTraineTimeYear(List<Client> clients)
+        static List<string> FindTraineTimeInYear(List<Client> clients)
         {
-            var year = (from client in clients
+            var years = (from client in clients
                         group client by client.Year into yearGroup
                         orderby yearGroup.Sum(client => client.OverallTrainingTime), yearGroup.Key               
                         select $"{yearGroup.Key} - {yearGroup.Sum(client => client.OverallTrainingTime)}").ToList();
 
-            return year;
+            return years;
         }
     }
 }
