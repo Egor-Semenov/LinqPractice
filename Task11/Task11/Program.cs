@@ -4,6 +4,24 @@ using System.Linq;
 
 namespace Task11
 {
+    class Client : IComparable<Client>
+    {
+        public int id;
+        public int month;
+        public double workTime;
+
+        public Client(int id, int month, double workTime)
+        {
+            this.id = id;
+            this.month = month;
+            this.workTime = workTime;
+        }
+
+        public int CompareTo(Client other)
+        {
+            return workTime.CompareTo(other.workTime);
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -33,24 +51,5 @@ namespace Task11
 
             return minTimeClient;
         }
-    }
-}
-
-class Client : IComparable<Client>
-{
-    public int id;
-    public int month;
-    public double workTime;
-
-    public Client(int id, int month, double workTime)
-    {
-        this.id = id;
-        this.month = month;
-        this.workTime = workTime;
-    }
-
-    public int CompareTo(Client other)
-    { 
-        return workTime.CompareTo(other.workTime); 
     }
 }
