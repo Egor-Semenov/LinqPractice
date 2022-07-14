@@ -39,12 +39,12 @@ namespace Task23
         //</summary>
         static string FindMaxTraineTimeYear(List<Client> clients)
         {
-            var years = (from client in clients
+            var year = (from client in clients
                          group client by client.Year into yearGroup
                          orderby yearGroup.Sum(client => client.OverallTrainingTime) descending, yearGroup.Key
                          select $"{yearGroup.Key} - {yearGroup.Sum(client => client.OverallTrainingTime)}").First();
 
-            return years;
+            return year;
         }
     }
 }
